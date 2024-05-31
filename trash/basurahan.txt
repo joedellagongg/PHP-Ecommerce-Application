@@ -1,0 +1,63 @@
+   <p><?php echo $row["product_name"]; ?></p>
+                    <p><?php echo $row["price"]; ?></p>
+
+
+
+            <div class="products">
+            <?php 
+            while($row=$result->fetch_assoc()){ ?>
+                <div class="product">
+  
+                </div>
+
+                <?php
+                 }
+                ?>
+
+            </div>
+
+                                <td><img class="product-cards" style="border: none; width: 100px; height:100px;" src="<?php echo base64_encode($row['image']).; ?>"  alt=""></td>                    
+
+                                   <?php
+
+$total = 0;
+
+while($row_cart = mysqli_fetch_array($run_cart)){
+
+$pro_id = $row_cart['p_id'];
+
+$pro_size = $row_cart['size'];
+
+$pro_qty = $row_cart['qty'];
+
+$only_price = $row_cart['p_price'];
+$sub_total = $only_price*$pro_qty;
+
+$_SESSION['pro_qty'] = $pro_qty;
+
+$total += $sub_total;
+
+?>
+
+         <div class="cart-div">
+                    <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Carts</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>    
+                    <?php while($row=$result->fetch_assoc()){ ?>
+                        <td><input name="deleteId[]" type="checkbox" value="<?php echo $row["id"]?>"></td>
+                        <td><?php echo $row["name"]; ?></td>
+                        <td><?php echo $row["quantity"]; ?></td>
+                        <td>Subtotal: ₱<?php echo $row["price"];?></td>                        
+                    </tr>
+                    <?php }?>
+                    </table>
+                </div>
+
+                <input type="hidden" name="name" id="<?php echo $row["name"]; ?>">
+                        <input type="hidden" name="quantity" id="<?php echo $row["quantity"]; ?>">
+                        <input type="hidden" name="price" id="<?php echo $row["price"]; ?>">
