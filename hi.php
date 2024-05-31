@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    I don't have Cookies
+
 
     <?php
                     $mysql_esched = "SELECT * from `department`";
